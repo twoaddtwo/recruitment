@@ -8,13 +8,14 @@ print(curPath)
 print(rootPath)
 
 from BaseMedicine.zhongyao import Zhongyao
+from ZhensuoManage.employee import Employee
 from BeautifulReport import BeautifulReport
 
 
 def mysuit():
     suite = unittest.TestSuite()
-    suite.addTest(Zhongyao("test_create_zhongyao"))
-
+    # suite.addTest(Zhongyao("test_create_zhongyao"))
+    suite.addTest(Employee("test_create_employee"))
 
 
     return suite
