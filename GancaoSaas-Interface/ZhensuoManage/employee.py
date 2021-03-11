@@ -15,6 +15,9 @@ class Employee(unittest.TestCase):
     def test_create_employee(self):
         result, id = employeedata.create_employee(phone, authcode)
         self.assertEqual("用户新增成功", result['message'])
+        result = employeedata.getlist_employee(phone)
+        self.assertEqual("用户列表获取成功", result['message'])
+        self.assertEqual(1, result['data']['total'])
         result = login.send_authcode(phone)
         self.assertEqual("验证码发送成功!", result['message'])
         result = login.authcode_login(phone, authcode)

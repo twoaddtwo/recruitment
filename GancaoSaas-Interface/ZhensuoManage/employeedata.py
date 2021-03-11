@@ -27,6 +27,22 @@ def create_employee(phone, authcode):
     return r.json(), r.json()['data']
 
 
+def getlist_employee(phone):
+    url = "https://test.igancao.cn:8000/gateway/base/employee/getList"
+    data = {
+            "pageNum": 1,
+            "pageSize": 10,
+            "enabledVals": "",
+            "name": "",
+            "phone": phone,
+            "positionIds": "",
+            "remark": "",
+            "sex": ""
+            }
+    r = requests.post(url, headers= headers, data = json.dumps(data), verify=False)
+    return r.json()
+
+
 def update_employee(phone, authcode, id):
     url = "https://test.igancao.cn:8000/gateway/base/employee/update"
     data = {
