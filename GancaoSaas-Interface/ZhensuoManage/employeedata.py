@@ -24,8 +24,7 @@ def create_employee(phone, authcode):
         "passport": "tanglaoya" + authcode
     }
     r = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
-    print(r.json())
-    return r.json()['data']
+    return r.json(), r.json()['data']
 
 
 def update_employee(phone, authcode, id):
@@ -47,7 +46,7 @@ def update_employee(phone, authcode, id):
             "id": id
             }
     r = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
-    print(r.json())
+    return r.json()
 
 
 def disable_employee(id, enable):
@@ -57,14 +56,16 @@ def disable_employee(id, enable):
             "enable": enable
             }
     r = requests.post(url, headers=headers, data=json.dumps(data), verify=False)
-    print(r.json())
+    return r.json()
 
 
 def del_employee(id):
     del_employee_sql = "delete from gd_default.base_employee where id = '%s'" % id
-    DB.del_sql(del_employee_sql)
+    result = DB.del_sql(del_employee_sql)
+    return result
 
 
 def query_employee(id):
     query_employee_sql = "select * from gd_default.base_employee where id = '%s'" % id
-    DB.exe_sql(query_employee_sql)
+    result = DB.exe_sql(query_employee_sql)
+    return result

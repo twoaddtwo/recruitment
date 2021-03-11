@@ -11,16 +11,20 @@ def exe_sql(sql):
     # 使用cursor()方法获取操作游标
     cursor = db.cursor()
     try:
-        print(sql)
+        # print(sql)
         cursor.execute(sql)
-        results = cursor.fetchall()
+        # results = cursor.fetchall()
         if cursor.rowcount != 0:
-            print("查询到符合条件的数据")
+            # print("查询到符合条件的数据")
+            result = "查询到数据"
         else:
-            print("没有找到符合条件的数据")
+            # print("没有找到符合条件的数据")
+            result = "没有查询到数据"
     except:
         print("Error: unable to fecth data")
+        result = "没有查询到数据"
     db.close()
+    return result
 
 
 def del_sql(sql):
@@ -32,14 +36,17 @@ def del_sql(sql):
                          charset='utf8')
     cursor = db.cursor()
     try:
-        print(sql)
+        # print(sql)
         cursor.execute(sql)
         db.commit()
-        print("删除数据成功")
+        # print("删除数据成功")
+        result = "删除成功"
     except:
         # 发生错误时回滚
         db.rollback()
-        print("删除数据失败")
+        # print("删除数据失败")
+        result = "删除失败"
     finally:
         cursor.close()
+    return result
 

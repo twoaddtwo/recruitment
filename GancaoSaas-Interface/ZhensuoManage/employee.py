@@ -13,15 +13,24 @@ print(authcode)
 class Employee(unittest.TestCase):
 
     def test_create_employee(self):
-        id = employeedata.create_employee(phone, authcode)
-        login.send_authcode(phone)
-        login.authcode_login(phone, authcode)
-        employeedata.update_employee(phone, authcode, id)
-        employeedata.query_employee(id)
-        employeedata.disable_employee(id, -1)
+        result, id = employeedata.create_employee(phone, authcode)
+        self.assertEqual("用户新增成功", result['message'])
+        result = login.send_authcode(phone)
+        self.assertEqual("验证码发送成功!", result['message'])
+        result = login.authcode_login(phone, authcode)
+        self.assertEqual("登录成功", result['message'])
+        result = employeedata.update_employee(phone, authcode, id)
+        self.assertEqual("用户修改成功", result['message'])
+        result = employeedata.query_employee(id)
+        self.assertEqual("查询到数据", result)
+        result = employeedata.disable_employee(id, -1)
+        self.assertEqual("操作成功", result['message'])
         employeedata.disable_employee(id, 1)
-        employeedata.del_employee(id)
-        employeedata.query_employee(id)
+        self.assertEqual("操作成功", result['message'])
+        result = employeedata.del_employee(id)
+        self.assertEqual("删除成功", result)
+        result = employeedata.query_employee(id)
+        self.assertEqual("没有查询到数据", result)
 
 
 
