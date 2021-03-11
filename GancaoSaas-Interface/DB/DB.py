@@ -13,7 +13,7 @@ def exe_sql(sql):
     try:
         # print(sql)
         cursor.execute(sql)
-        # results = cursor.fetchall()
+        results = cursor.fetchall()
         if cursor.rowcount != 0:
             # print("查询到符合条件的数据")
             result = "查询到数据"
@@ -23,8 +23,9 @@ def exe_sql(sql):
     except:
         print("Error: unable to fecth data")
         result = "没有查询到数据"
+        results = "null"
     db.close()
-    return result
+    return result, results
 
 
 def del_sql(sql):

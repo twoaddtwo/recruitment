@@ -83,5 +83,5 @@ def del_employee(id):
 
 def query_employee(id):
     query_employee_sql = "select * from gd_default.base_employee where id = '%s'" % id
-    result = DB.exe_sql(query_employee_sql)
+    result, results = DB.exe_sql(query_employee_sql)
     return result
