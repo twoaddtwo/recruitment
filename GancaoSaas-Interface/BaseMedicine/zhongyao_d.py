@@ -101,7 +101,7 @@ def inport_zhongyao(medicinetype):
     headers = {"access_shop": "199", "access_version": "development",
                "access_token": common.token}
     data = {"medicineType": medicinetype}
-    files = {'file': ('药材导入.xls', open('BaseMedicine/药材导入.xls', 'rb'))}
+    files = {'file': ('药材导入.xls', open('/Users/zhaoxinyu/Desktop/GancaoSaas-Interface/BaseMedicine/药材导入.xls', 'rb'))}
     r = requests.post(url, headers=headers, data=data, files=files, verify=False)
     return r.json()
 
@@ -173,7 +173,7 @@ def inport_medicine_item():
     url = "https://test.igancao.cn:8000/gateway/pharmacy/medicineTreatmentItems/inportData"
     headers = {"access_shop": "199", "access_version": "development",
                "access_token": common.token}
-    files = {'file': ('诊疗项目导入.xls', open('BaseMedicine/诊疗项目导入.xls', 'rb'))}
+    files = {'file': ('诊疗项目导入.xls', open('/Users/zhaoxinyu/Desktop/GancaoSaas-Interface/BaseMedicine/诊疗项目导入.xls', 'rb'))}
     r = requests.post(url, headers=headers, files=files, verify=False)
     return r.json()
 
