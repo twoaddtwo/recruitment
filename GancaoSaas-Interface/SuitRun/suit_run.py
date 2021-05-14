@@ -13,6 +13,12 @@ from ZhensuoManage.employee import Employee
 from ZhensuoManage.config import Config
 from ZhensuoManage.desk import Desk
 from ZhensuoManage.role import Role
+from DockerStation.patient import Patient
+from DockerStation.recipeltemplate import Recipeltemplate
+from MedicineInstock.instock import Instock
+from MedicineInstock.schedule import Schedule
+from MedicineInstock.takestock import Takestock
+from VipCard.viplist import Vipcard
 from BeautifulReport import BeautifulReport
 
 
@@ -38,6 +44,13 @@ def mysuit():
     suite.addTest(Desk("test_create_desk"))
 
     suite.addTest(Role("test_create_role"))
+    suite.addTest(Patient("test_create_mypatient"))
+    suite.addTest(Recipeltemplate("test_create_recipeltemplate"))
+    suite.addTest(Instock("test_create_medicine_instock"))
+    suite.addTest(Schedule("test_create_schedule"))
+    suite.addTest(Takestock("test_create_medicine_takestock"))
+    suite.addTest(Vipcard("test_create_vipcard"))
+
 
 
 

@@ -1,4 +1,4 @@
-import instockdata
+from MedicineInstock import instockdata
 import unittest
 
 
